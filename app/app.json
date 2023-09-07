@@ -1,0 +1,31 @@
+{
+  "id": "36af426a-9923-4537-8939-b76c2d1e189e",
+  "name": "Ciellos",
+  "publisher": "Angello Morales",
+  "version": "22.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 50700,
+      "to": 50749
+    }
+  ],
+  "features": [ "TranslationFile", "GenerateCaptions", "GenerateLockedTranslations" ],
+  "supportedLocales": [ "es-ES", "en-US"],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "10.0"
+}

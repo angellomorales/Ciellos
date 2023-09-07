@@ -1,0 +1,15 @@
+{
+    "al.codeAnalyzers": [
+        "${CodeCop}",
+        "${UICop}"
+    ],
+    "CRS.ObjectNamePrefix": "Ciellos_",
+    "CRS.ObjectNameSuffix": "_Test",
+    "CRS.OnSaveAlFileAction": "Reorganize",
+    "CRS.RemovePrefixFromFilename": false,
+    "CRS.RemoveSuffixFromFilename": false,
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectId>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectId>.<ObjectTypeShortPascalCase>.al",
+    "CRS.ExtensionObjectNamePattern": "<Prefix><BaseNameShort>",
+    "al.enableCodeAnalysis": false,
+}

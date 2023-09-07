@@ -1,0 +1,13 @@
+{
+    "al.codeAnalyzers": [     
+        "${CodeCop}","${UICop}"
+     ],
+    "CRS.ObjectNamePrefix": "IPI_",
+    "CRS.OnSaveAlFileAction": "Reorganize",
+    "CRS.RemovePrefixFromFilename":false,
+    "CRS.RemoveSuffixFromFilename": true,
+    "CRS.FileNamePattern": "<ObjectNameShort>.<ObjectId>.<ObjectTypeShortPascalCase>.al",
+    "CRS.FileNamePatternExtensions": "<ObjectNameShort>.<ObjectId>.<ObjectTypeShortPascalCase>.al",
+    "CRS.ExtensionObjectNamePattern": "<Prefix><BaseNameShort>",
+    // "al.enableCodeAnalysis": true,
+}

@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "app"
+		},
+		{
+			"path": "test"
+		},
+		{
+			"path": "atdd.scenarios"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"window.titleSeparator": " - ",
+		"window.title": "ReportingAPI${separator}${activeFolderLong}${separator}${dirty}${activeEditorShort}${separator}${appName}"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Local Windows Auth",
+				"request": "launch",
+				"type": "al",
+				"environmentType": "OnPrem",
+				"server": "http://bc201apitest",
+				"serverInstance": "BC",
+				"authentication": "Windows",
+				"startupObjectId": 130451,
+				"startupObjectType": "Page",
+				"breakOnError": true,
+				"launchBrowser": true,
+				"enableLongRunningSqlStatements": true,
+				"enableSqlInformationDebugger": true,
+				"tenant": "default",
+				"schemaUpdateMode": "ForceSync"
+			}
+		]
+	}
+}
