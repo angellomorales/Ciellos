@@ -13,7 +13,8 @@
 	"settings": {
 		"git.ignoreLimitWarning": true,
 		"window.titleSeparator": " - ",
-		"window.title": "ReportingAPI${separator}${activeFolderLong}${separator}${dirty}${activeEditorShort}${separator}${appName}"
+		"window.title": "ReportingAPI${separator}${activeFolderLong}${separator}${dirty}${activeEditorShort}${separator}${appName}",
+		"powershell.cwd": "c:\\Users\\enrri\\OneDrive\\Escritorio\\Ciellos\\atdd.scenarios"
 	},
 	"launch": {
 		"version": "0.2.0",
