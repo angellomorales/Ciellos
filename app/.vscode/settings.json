@@ -2,7 +2,7 @@
     "al.codeAnalyzers": [     
         "${CodeCop}","${UICop}"
      ],
-    "CRS.ObjectNamePrefix": "IPI_",
+    "CRS.ObjectNamePrefix": "Ciellos_",
     "CRS.OnSaveAlFileAction": "Reorganize",
     "CRS.RemovePrefixFromFilename":false,
     "CRS.RemoveSuffixFromFilename": true,
