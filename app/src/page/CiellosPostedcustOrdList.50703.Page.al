@@ -29,6 +29,18 @@ page 50703 "Ciellos_Posted cust. Ord. List"
                 {
                     ToolTip = 'Specifies the value of the Order Amount field.';
                 }
+                field("Paid Amount"; Rec."Paid Amount")
+                {
+                    ToolTip = 'Specifies the value of the Paid Amount field.';
+                    trigger OnDrillDown()
+                    begin
+                        Rec.OpenCustomerOrderPaymentPage();
+                    end;
+                }
+                field("Pending Amount"; Rec."Pending Amount")
+                {
+                    ToolTip = 'Specifies the value of the Pending Amount field.';
+                }
             }
         }
         area(FactBoxes)
@@ -40,28 +52,45 @@ page 50703 "Ciellos_Posted cust. Ord. List"
             }
         }
     }
-    // actions
-    // {
-    //     area(Promoted)
-    //     {
-    //         actionref(PostPromotedActionRef; Post)
-    //         {
-    //         }
-    //     }
-    //     area(Processing)
-    //     {
-    //         action(Post)
-    //         {
-    //             ApplicationArea = All;
-    //             Enabled = Rec."Order Amount" <> 0;
+    actions
+    {
+        area(Promoted)
+        {
+            actionref(PaymentPromotedActionRef; Payment)
+            {
+            }
+        }
+        area(Processing)
+        {
+            action(Payment)
+            {
+                ApplicationArea = All;
+                Caption = 'Set Payment';
+                Enabled = Rec."Pending Amount" > 0;
 
-    //             trigger OnAction()
-    //             var
-    //                 PostCustomerOrder: Codeunit "Ciellos_Post Customer Order";
-    //             begin
-    //                 PostCustomerOrder.Run(Rec)
-    //             end;
-    //         }
-    //     }
-    // }
+                trigger OnAction()
+                var
+                    PagecustomerOrderPayment: Page "Ciellos_Cust. Order Payments";
+                begin
+                    // rec.CalcFields("Paid Amount");
+                    PagecustomerOrderPayment.LookupMode(true);
+                    PagecustomerOrderPayment.SetDefaults(Rec);
+                    if PagecustomerOrderPayment.RunModal() = Action::LookupOK then begin
+                        PagecustomerOrderPayment.SavePayment(Rec);
+                        CurrPage.Update();
+                    end;
+                end;
+            }
+        }
+    }
+
+    trigger OnOpenPage()
+    begin
+        Rec.SetAutoCalcFields("Paid Amount");
+    end;
+
+    trigger OnAfterGetRecord()
+    begin
+        Rec."Pending Amount" := Rec."Order Amount" - Rec."Paid Amount";
+    end;
 }

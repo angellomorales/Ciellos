@@ -28,25 +28,25 @@ table 50702 "Ciellos_Customer Order Payment"
         field(3; "Related Document No."; Code[20])
         {
             Caption = 'Related Document No.';
-            TableRelation = "Ciellos_Customer Order Header"."No.";
+            TableRelation = "Ciellos_Posted Cus_Ord Head."."No.";
         }
-        field(4; "Line No."; Integer)
-        {
-            Caption = 'Line No.';
-        }
-        field(5; Amount; Decimal)
-        {
-            Caption = 'Amount';
-        }
-        field(6; "Pending Amount"; Decimal)
+        // field(4; "Line No."; Integer)
+        // {
+        //     Caption = 'Line No.';
+        // }
+        field(4; Amount; Decimal)
         {
             Caption = 'Amount';
         }
-        field(7; "Posting Date"; Date)
+        field(5; "Pending Amount"; Decimal)
+        {
+            Caption = 'Pending Amount';
+        }
+        field(6; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
         }
-        field(8; "No. Series"; Code[20])
+        field(7; "No. Series"; Code[20])
         {
             Caption = 'No. Series';
             Editable = false;
@@ -55,7 +55,7 @@ table 50702 "Ciellos_Customer Order Payment"
     }
     keys
     {
-        key(PK; "No.", "Line No.")
+        key(PK; "No.")
         {
             Clustered = true;
         }

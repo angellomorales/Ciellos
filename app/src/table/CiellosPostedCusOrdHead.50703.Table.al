@@ -69,6 +69,20 @@ table 50703 "Ciellos_Posted Cus_Ord Head."
             Editable = false;
             TableRelation = "No. Series";
         }
+        field(7; "Paid Amount"; Decimal)
+        {
+            FieldClass = FlowField;
+            Caption = 'Paid Amount';
+            Editable = false;
+            CalcFormula = sum("Ciellos_Customer Order Payment".Amount
+             where("Related Document No." = field("No."),
+            "Customer No." = field("Sell to Customer No.")));
+        }
+        field(8; "Pending Amount"; Decimal)
+        {
+            Caption = 'Pending Amount';
+            Editable = false;
+        }
     }
     keys
     {
@@ -103,5 +117,14 @@ table 50703 "Ciellos_Posted Cus_Ord Head."
     begin
         PostedCustomerOrderLine.SetRange("Document No.", Rec."No.");
         PostedCustomerOrderLine.DeleteAll();
+    end;
+
+    procedure OpenCustomerOrderPaymentPage()
+    var
+        CustomerOrderPayment: Record "Ciellos_Customer Order Payment";
+
+    begin
+        CustomerOrderPayment.SetRange("Related Document No.", Rec."No.");
+        Page.Run(Page::"Ciellos_Cust. Ord. PayList", CustomerOrderPayment);
     end;
 }
