@@ -18,6 +18,16 @@ codeunit 50700 "Ciellos_Install Ciellos"
         SalesSetup.Modify();
     end;
 
+    trigger OnInstallAppPerDatabase()
+    var
+        AppInfo: ModuleInfo;
+    begin
+        NavApp.GetCurrentModuleInfo(AppInfo);
+        if AppInfo.DataVersion = Version.Create(0, 0, 0, 0) then
+            Message('installed');
+
+    end;
+
     local procedure CreateNoSeries(NoSeriesCode: Code[20])
     var
 
