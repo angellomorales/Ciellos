@@ -26,10 +26,18 @@ table 50700 "Ciellos_Customer Order Header"
             trigger OnValidate()
             var
                 Customer: Record Customer;
+                CustomerOrderLine: Record "Ciellos_Customer Order Line";
             begin
                 if "Sell to Customer No." <> '' then begin
                     Customer.get("Sell to Customer No.");
                     "Sell to Customer Name" := Customer.Name;
+
+                    CustomerOrderLine.SetRange("Document No.", Rec."No.");
+                    if CustomerOrderLine.FindSet() then
+                        repeat
+                            CustomerOrderLine.Validate("Customer No.", Rec."Sell to Customer No.");
+                            CustomerOrderLine.Modify(true);
+                        until CustomerOrderLine.Next() = 0;
                 end
             end;
         }
@@ -45,6 +53,7 @@ table 50700 "Ciellos_Customer Order Header"
             where("Document No." = field("No."),
             "Customer No." = field("Sell to Customer No.")));
             Caption = 'Order Amount';
+            Editable = false;
         }
         field(5; "Posting Date"; Date)
         {
@@ -82,5 +91,13 @@ table 50700 "Ciellos_Customer Order Header"
             NoSeriesMgt.InitSeries(SalesSetup."Ciellos_Customer Order Nos.", xRec."No. Series", "Posting Date", Rec."No.", Rec."No. Series");
         end;
 
+    end;
+
+    trigger OnDelete()
+    var
+        CustomerOrderLine: Record "Ciellos_Customer Order Line";
+    begin
+        CustomerOrderLine.SetRange("Document No.", Rec."No.");
+        CustomerOrderLine.DeleteAll();
     end;
 }

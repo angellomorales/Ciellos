@@ -42,7 +42,8 @@ table 50701 "Ciellos_Customer Order Line"
         }
         field(7; "Line Amount"; Decimal)
         {
-            Caption = 'Unit Price';
+            Caption = 'Line Amount';
+            Editable = false;
         }
     }
     keys
