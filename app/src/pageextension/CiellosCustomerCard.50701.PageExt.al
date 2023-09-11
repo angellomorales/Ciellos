@@ -19,13 +19,22 @@ pageextension 50701 "Ciellos_CustomerCard" extends "Customer Card"
                     ;
                 end;
             }
-            // field("Ciellos_Open Cust. Ord. Amount"; Rec."Ciellos_Cust. Ord. Open")
-            // {
-            //     trigger OnDrillDown()
-            //     begin
-            //         Rec.CustomerOrdersOpen();
-            //     end;
-            // }
+            field("Ciellos_Cust. Order Amt"; Rec."Ciellos_Cust. Order Amt")
+            {
+                trigger OnDrillDown()
+                begin
+                    Rec.CustomerOrderLinePage();
+                    ;
+                end;
+            }
+            field("Ciellos_Cust. Payment Amt"; Rec."Ciellos_Cust. Payment Amt")
+            {
+                trigger OnDrillDown()
+                begin
+                    Rec.CustomerOrderPaymentPage();
+                    ;
+                end;
+            }
         }
         moveafter(Name; Blocked)
         moveafter(Blocked; "Credit Limit (LCY)")

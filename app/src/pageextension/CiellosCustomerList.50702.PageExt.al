@@ -18,13 +18,23 @@ pageextension 50702 "Ciellos_CustomerList" extends "Customer List"
                     Rec.PostedCustomerOrders();
                 end;
             }
-            // field("Ciellos_Open Cust. Ord. Amount"; Rec."Ciellos_Cust. Ord. Open")
-            // {
-            //     trigger OnDrillDown()
-            //     begin
-            //         Rec.CustomerOrdersOpen();
-            //     end;
-            // }
+            field("Ciellos_Cust. Order Amt"; Rec."Ciellos_Cust. Order Amt")
+            {
+                trigger OnDrillDown()
+                begin
+                    Rec.CustomerOrderLinePage();
+                    ;
+                end;
+            }
+            field("Ciellos_Cust. Payment Amt"; Rec."Ciellos_Cust. Payment Amt")
+            {
+                trigger OnDrillDown()
+                begin
+                    Rec.CustomerOrderPaymentPage();
+                    ;
+                end;
+            }
+
         }
         moveafter(Name; Contact)
         movebefore("Responsibility Center"; "Location Code")
