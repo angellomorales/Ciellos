@@ -8,9 +8,24 @@ pageextension 50701 "Ciellos_CustomerCard" extends "Customer Card"
             {
                 trigger OnDrillDown()
                 begin
-                    Rec.OpenCustomerOrderLines();
+                    Rec.CustomerOrdersOpen();
                 end;
             }
+            field("Ciellos_Cust. Ord. Posted"; Rec."Ciellos_Cust. Ord. Posted")
+            {
+                trigger OnDrillDown()
+                begin
+                    Rec.PostedCustomerOrders();
+                    ;
+                end;
+            }
+            // field("Ciellos_Open Cust. Ord. Amount"; Rec."Ciellos_Cust. Ord. Open")
+            // {
+            //     trigger OnDrillDown()
+            //     begin
+            //         Rec.CustomerOrdersOpen();
+            //     end;
+            // }
         }
         moveafter(Name; Blocked)
         moveafter(Blocked; "Credit Limit (LCY)")

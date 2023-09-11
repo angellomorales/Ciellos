@@ -8,6 +8,10 @@ pageextension 50700 "Ciellos_SalesReceivablesSetup" extends "Sales & Receivables
             {
                 ApplicationArea = All;
             }
+            field("Ciellos_Posted Customer Nos."; Rec."Ciellos_Posted Customer Nos.")
+            {
+                ApplicationArea = All;
+            }
             field("Ciellos_Customer Payment Nos."; Rec."Ciellos_Customer Payment Nos.")
             {
                 ApplicationArea = All;

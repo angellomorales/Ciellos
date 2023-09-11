@@ -1,11 +1,11 @@
-page 50700 "Ciellos_Customer Order List"
+page 50703 "Ciellos_Posted cust. Ord. List"
 {
     ApplicationArea = All;
-    Caption = 'Customer Order List';
+    Caption = 'Posted Customer Order List';
     PageType = List;
-    SourceTable = "Ciellos_Customer Order Header";
+    SourceTable = "Ciellos_Posted Cus_Ord Head.";
     UsageCategory = Lists;
-    CardPageId = "Ciellos_Customer Order card";
+    CardPageId = "Ciellos_Posted Cust. Ord. card";
 
     layout
     {
@@ -40,28 +40,28 @@ page 50700 "Ciellos_Customer Order List"
             }
         }
     }
-    actions
-    {
-        area(Promoted)
-        {
-            actionref(PostPromotedActionRef; Post)
-            {
-            }
-        }
-        area(Processing)
-        {
-            action(Post)
-            {
-                ApplicationArea = All;
-                Enabled = Rec."Order Amount" <> 0;
+    // actions
+    // {
+    //     area(Promoted)
+    //     {
+    //         actionref(PostPromotedActionRef; Post)
+    //         {
+    //         }
+    //     }
+    //     area(Processing)
+    //     {
+    //         action(Post)
+    //         {
+    //             ApplicationArea = All;
+    //             Enabled = Rec."Order Amount" <> 0;
 
-                trigger OnAction()
-                var
-                    PostCustomerOrder: Codeunit "Ciellos_Post Customer Order";
-                begin
-                    PostCustomerOrder.Run(Rec)
-                end;
-            }
-        }
-    }
+    //             trigger OnAction()
+    //             var
+    //                 PostCustomerOrder: Codeunit "Ciellos_Post Customer Order";
+    //             begin
+    //                 PostCustomerOrder.Run(Rec)
+    //             end;
+    //         }
+    //     }
+    // }
 }

@@ -10,6 +10,9 @@ codeunit 50700 "Ciellos_Install Ciellos"
         CreateNoSeries('CIE-CUS-ORD');
         SalesSetup."Ciellos_Customer Order Nos." := 'CIE-CUS-ORD';
 
+        CreateNoSeries('CIE-PCU-ORD');
+        SalesSetup."Ciellos_Posted Customer Nos." := 'CIE-PCU-ORD';
+
         CreateNoSeries('CIE-CUS-PAY');
         SalesSetup."Ciellos_Customer Payment Nos." := 'CIE-CUS-PAY';
         SalesSetup.Modify();

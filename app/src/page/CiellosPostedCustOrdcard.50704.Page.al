@@ -1,9 +1,9 @@
-page 50701 "Ciellos_Customer Order card"
+page 50704 "Ciellos_Posted Cust. Ord. card"
 {
     ApplicationArea = All;
-    Caption = 'Customer Order card';
+    Caption = 'Posted Customer Order card';
     PageType = Card;
-    SourceTable = "Ciellos_Customer Order Header";
+    SourceTable = "Ciellos_Posted Cus_Ord Head.";
 
     layout
     {
@@ -34,7 +34,7 @@ page 50701 "Ciellos_Customer Order card"
                     ToolTip = 'Specifies the value of the No. Series field.';
                 }
             }
-            part("Customer Order Lines"; "Ciellos_Cust. Ord. subform")
+            part("Customer Order Lines"; "Ciellos_Posted Cus_Ord subform")
             {
                 SubPageLink = "Document No." = field("No.");
                 UpdatePropagation = Both;
@@ -57,35 +57,35 @@ page 50701 "Ciellos_Customer Order card"
             }
         }
     }
-    actions
-    {
-        area(Promoted)
-        {
-            actionref(PostPromotedActionRef; Post)
-            {
-            }
-        }
-        area(Processing)
-        {
-            action(Post)
-            {
-                ApplicationArea = All;
-                Enabled = Rec."Order Amount" <> 0;
+    // actions
+    // {
+    //     area(Promoted)
+    //     {
+    //         actionref(PostPromotedActionRef; Post)
+    //         {
+    //         }
+    //     }
+    //     area(Processing)
+    //     {
+    //         action(Post)
+    //         {
+    //             ApplicationArea = All;
+    //             Enabled = Rec."Order Amount" <> 0;
 
-                trigger OnAction()
-                var
-                    PostCustomerOrder: Codeunit "Ciellos_Post Customer Order";
-                begin
-                    PostCustomerOrder.Run(Rec)
-                end;
-            }
-        }
-    }
+    //             trigger OnAction()
+    //             var
+    //                 PostCustomerOrder: Codeunit "Ciellos_Post Customer Order";
+    //             begin
+    //                 PostCustomerOrder.Run(Rec)
+    //             end;
+    //         }
+    //     }
+    // }
 
-    trigger OnNewRecord(BelowxRec: Boolean)
+    // trigger OnNewRecord(BelowxRec: Boolean)
 
-    begin
-        if Rec."Posting Date" = 0D then
-            Rec."Posting Date" := WorkDate();
-    end;
+    // begin
+    //     if Rec."Posting Date" = 0D then
+    //         Rec."Posting Date" := WorkDate();
+    // end;
 }
